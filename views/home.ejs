@@ -26,16 +26,29 @@
     </form>
     <div>
         <% for(let task of tasks){%>
-            <div style="display: flex; align-items: center;">
-                <input type="checkbox">
+            <div style="display: flex;">
+                <input type="checkbox" class="checked">
                 <p><%= task.description %></p>
                 <p><%= task.dueDate %></p>
                 <p><%= task.category %></p>
                 <a href="/delete-task/<%= task._id %>">
-                    Delete Tasks
+                    Delete Task
                 </a>
             </div>
         <%}%>
     </div>
+
+
+
+
+    <script type="text/javascript">
+        var ids = [];
+        var checkedItems = document.getElementsByClassName('checked');
+        for(let t = 0; t < checkedItems.length; t++){
+            checkedItems[t].addEventListener('change', function(e){
+                console.log(e.target.value)
+            })
+        }
+    </script>
 </body>
-</html>
+</html>=
