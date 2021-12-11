@@ -20,14 +20,11 @@
               </select>
         </div>
         <button type="submit">Add Task</button>
-        <a href="">
-            Delete Tasks
-        </a>
     </form>
     <div>
         <% for(let task of tasks){%>
             <div style="display: flex;">
-                <input type="checkbox" class="checked">
+                <input type="checkbox" class="checked" value="<%= task._id %>">
                 <p><%= task.description %></p>
                 <p><%= task.dueDate %></p>
                 <p><%= task.category %></p>
@@ -38,17 +35,35 @@
         <%}%>
     </div>
 
+    <form id="delete-forl" action="/delete-tasks" method="POST">
+        <button>Delete Tasks</button>
+    </form>
 
 
 
     <script type="text/javascript">
         var ids = [];
         var checkedItems = document.getElementsByClassName('checked');
+        var taskTobe = document.getElementById('delete-forl')
         for(let t = 0; t < checkedItems.length; t++){
-            checkedItems[t].addEventListener('change', function(e){
-                console.log(e.target.value)
+            checkedItems[t].addEventListener('click', function(e){
+                ind = ids.findIndex( i => i == e.target.value);
+                console.log(ind)
+                if(ind == -1){
+                    ids.push(e.target.value)
+                    let ele = document.createElement('input');
+                    ele.type = 'hidden';
+                    ele.value = e.target.value
+                    ele.name= e.target.value
+                    ele.id = e.target.value
+                    taskTobe.appendChild( ele )
+                }else{
+                    ids.splice(ind, 1);
+                    let el = document.getElementById(ids[ind])
+                    el.remove();
+                }
             })
         }
     </script>
 </body>
-</html>=
+</html>
