@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <h1>This is <%= title %></h1>
+    <form id="task-form" action="/add-task" method="POST">
+        <div>
+            <input type="text" name="description" id="description" required/>
+            <input type="date" name="dueDate" id="dueDate"/>
+            <select name="category" id="category">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+              </select>
+        </div>
+        <button type="submit">Add Task</button>
+        <a href="">
+            Delete Tasks
+        </a>
+    </form>
+    <div>
+        <% for(let task of tasks){%>
+            <div style="display: flex; align-items: center;">
+                <input type="checkbox">
+                <p><%= task.description %></p>
+                <p><%= task.dueDate %></p>
+                <p><%= task.category %></p>
+                <a href="/delete-task/<%= task._id %>">
+                    Delete Tasks
+                </a>
+            </div>
+        <%}%>
+    </div>
+</body>
+</html>
