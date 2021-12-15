@@ -1,7 +1,4 @@
-body{
-    background-color: white;
-}
-/* Main */
+/* styling for the main section */
 .main{
     margin: auto;
     display: flex; 
@@ -12,7 +9,7 @@ body{
     background-color: rgb(220, 217, 199);
     width: 60%;
 }
-/* Header */
+/* styling for header */
 #header{
     display: flex;
     align-items: center;
@@ -27,7 +24,7 @@ body{
     color: black;
 }
 
-/* Add task form */
+/* styling for add task form */
 #task-form{
     margin: 0 2em;
     width: 100%;
@@ -82,6 +79,7 @@ body{
     padding: 0.2em 0;
 }
 
+/* Common styling for add task and delete multiple tasks buttons */
 .class-button-style{
     padding: 0.5em 0.5em;
     font-size: 1em;
@@ -144,6 +142,8 @@ body{
     font-size: 12px;
     padding-top: 2px;
 }
+
+/* container for delete single task button and category */
 .delete-task-container{
     width: 20%;
     display: flex;
@@ -185,10 +185,7 @@ body{
 }
 
 /* footer */
-#delete-tasks-form{
-    
-}
- /* to delete multiple tasks at once */
+ /* styling to delete multiple tasks at once */
  #delete-tasks-container{
     margin: auto;
     position: relative;

@@ -14,13 +14,18 @@
       <i class="fa fa-list-ul" aria-hidden="true"></i>
       <span> Todo App </span>
     </div>
+    <!-- main container -->
     <div class="main">
+      <!-- Add task form -->
       <form id="task-form" action="/add-task" method="POST">
+        <!-- description container -->
          <div id="description-container">
             <p>DESCRIPTION</p>
-            <input type="text" name="description" id="description" required class="input-style"/>
+            <input type="text" name="description" id="description" required class="input-style" autocomplete="off"/>
          </div>
+         <!-- due date and category -->
           <div id="category-date-container">
+            <!-- Category -->
             <div id="category-container">
                 <p>CATEGORY</p>
                 <select name="category" id="category" class="input-style">
@@ -32,11 +37,13 @@
                     <option value="others">Others</option>
                 </select>
             </div>
+            <!-- due date -->
               <div id="date-container">
                 <p>DUE DATE</p>
                 <input type="date" name="dueDate" id="dueDate" class="input-style"/>
               </div>
           </div>
+        <!-- Add task button container -->
         <div id="add-task-container">
             <button id="add-task-button" class="class-button-style" type="submit">
                 <i class="fas fa-plus"></i> &nbsp;
@@ -44,10 +51,13 @@
             </button>
         </div>
       </form>
+      <!-- Displaying all the tasks -->
         <div id="tasks-container">
             <% for(let task of tasks){%>
+              <!-- task container -->
             <div class="task-details-container">
                 <div class="task-details">
+                  <!-- checkbox to mark done and delete multiple tasks at once -->
                     <input type="checkbox" class="class-checked" value="<%= task._id %>" />
                     <div class="description-duedate-container">
                       <p class="class-description"><%= task.description %></p>
@@ -60,6 +70,7 @@
                       </p>
                     </div>
                    </div>
+                   <!-- Button to delete individual task -->
                 <div class="delete-task-container">
                     <p class="label-styles <%= task.category %>"><%= task.category %></p>
                     <a id="delete-task-link" href="/delete-task/<%= task._id %>"><i class="fas fa-times"></i></a>
@@ -67,6 +78,7 @@
             </div>
             <%}%>
         </div>
+       <!-- Form to collect the ids of all the tasks that should be deleted at once  -->
       <form id="delete-tasks-form" action="/delete-tasks" method="POST">
         <div id="delete-tasks-container">
           <button id="deleta-tasks-button" class="class-button-style"><i class="fas fa-trash"></i>&nbsp;Delete Tasks</button>

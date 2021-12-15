@@ -1,3 +1,4 @@
+// functionality ro delete multiple tasks at once
 var ids = [];
       var checkedItems = document.getElementsByClassName("class-checked");
       var taskTobe = document.getElementById("delete-tasks-form");

@@ -1,7 +1,7 @@
 const db = require('../config/mongoose')
 const Task = require('../models/task');
 
-// homepage to show all the tasks
+// route to homepage to show all the tasks
 module.exports.home = function(req, res){
     Task.find({}, function(err, tasks){
         if(err){
@@ -13,7 +13,7 @@ module.exports.home = function(req, res){
     
 };
 
-// to add a new task
+// route to add a new task
 module.exports.addTask = function(req, res){
     let formattedDate;
     if(req.body.dueDate){
@@ -34,7 +34,7 @@ module.exports.addTask = function(req, res){
     })
 };
 
-// to delete single task
+// route to delete a single task
 module.exports.deleteTask = function(req, res){
     Task.findByIdAndDelete(req.params.id, function(err){
        if(err){
@@ -45,7 +45,7 @@ module.exports.deleteTask = function(req, res){
     });
 }
 
-// to delete multiple tasks at once
+// route to delete multiple tasks at once
 module.exports.deleteTasks = function(req, res){
     let arr = Object.keys(req.body)
     Task.deleteMany({_id:{
