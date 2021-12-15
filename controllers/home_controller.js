@@ -15,10 +15,16 @@ module.exports.home = function(req, res){
 
 // to add a new task
 module.exports.addTask = function(req, res){
+    let formattedDate;
+    if(req.body.dueDate){
+        let newDate = new Date(req.body.dueDate)
+        let options = {year: 'numeric', month: 'long', day: 'numeric' };
+        formattedDate = newDate.toLocaleDateString("en-US", options)
+    }
     Task.create({
         description: req.body.description,
-        category: req.body.category,
-        dueDate: req.body.dueDate,
+        category: (req.body.category)?req.body.category: "NA",
+        dueDate: formattedDate,
     }, function(err, newTask){
         if(err){
             console.log('Error in creating task');

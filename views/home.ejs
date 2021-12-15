@@ -1,69 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
-</head>
-<body>
-    <h1>This is <%= title %></h1>
-    <form id="task-form" action="/add-task" method="POST">
-        <div>
-            <input type="text" name="description" id="description" required/>
-            <input type="date" name="dueDate" id="dueDate"/>
-            <select name="category" id="category">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-              </select>
-        </div>
-        <button type="submit">Add Task</button>
-    </form>
-    <div>
-        <% for(let task of tasks){%>
-            <div style="display: flex;">
-                <input type="checkbox" class="checked" value="<%= task._id %>">
-                <p><%= task.description %></p>
-                <p><%= task.dueDate %></p>
-                <p><%= task.category %></p>
-                <a href="/delete-task/<%= task._id %>">
-                    Delete Task
-                </a>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/home.css">
+  </head>
+  <body>
+    <div id="header">
+      <i class="fa fa-list-ul" aria-hidden="true"></i>
+      <span> Todo App </span>
+    </div>
+    <div class="main">
+      <form id="task-form" action="/add-task" method="POST">
+         <div id="description-container">
+            <p>DESCRIPTION</p>
+            <input type="text" name="description" id="description" required class="input-style"/>
+         </div>
+          <div id="category-date-container">
+            <div id="category-container">
+                <p>CATEGORY</p>
+                <select name="category" id="category" class="input-style">
+                    <option value="" disabled selected>Choose a category
+                    </option>
+                    <option value="personal">Personal</option>
+                    <option value="school">School</option>
+                    <option value="cleaning">Cleaning</option>
+                    <option value="others">Others</option>
+                </select>
             </div>
-        <%}%>
+              <div id="date-container">
+                <p>DUE DATE</p>
+                <input type="date" name="dueDate" id="dueDate" class="input-style"/>
+              </div>
+          </div>
+        <div id="add-task-container">
+            <button id="add-task-button" class="class-button-style" type="submit">
+                <i class="fas fa-plus"></i> &nbsp;
+                <span>Add Task</span>
+            </button>
+        </div>
+      </form>
+        <div id="tasks-container">
+            <% for(let task of tasks){%>
+            <div class="task-details-container">
+                <div class="task-details">
+                    <input type="checkbox" class="class-checked" value="<%= task._id %>" />
+                    <div class="description-duedate-container">
+                      <p class="class-description"><%= task.description %></p>
+                      <p class="class-due-date"><i class="fas fa-calendar-alt"></i>&nbsp;
+                        <% if(task.dueDate){ %>
+                          <%= task.dueDate%>
+                        <%}else{%>
+                          No Due Date
+                          <%}%>
+                      </p>
+                    </div>
+                   </div>
+                <div class="delete-task-container">
+                    <p class="label-styles <%= task.category %>"><%= task.category %></p>
+                    <a id="delete-task-link" href="/delete-task/<%= task._id %>"> <i class="fas fa-window-close"></i> </a>
+                </div>
+            </div>
+            <%}%>
+        </div>
+      <form id="delete-tasks-form" action="/delete-tasks" method="POST">
+        <div id="delete-tasks-container">
+          <button id="deleta-tasks-button" class="class-button-style"><i class="fas fa-trash"></i>&nbsp;Delete Tasks</button>
+        </div>
+      </form>
     </div>
 
-    <form id="delete-forl" action="/delete-tasks" method="POST">
-        <button>Delete Tasks</button>
-    </form>
-
-
-
-    <script type="text/javascript">
-        var ids = [];
-        var checkedItems = document.getElementsByClassName('checked');
-        var taskTobe = document.getElementById('delete-forl')
-        for(let t = 0; t < checkedItems.length; t++){
-            checkedItems[t].addEventListener('click', function(e){
-                ind = ids.findIndex( i => i == e.target.value);
-                console.log(ind)
-                if(ind == -1){
-                    ids.push(e.target.value)
-                    let ele = document.createElement('input');
-                    ele.type = 'hidden';
-                    ele.value = e.target.value
-                    ele.name= e.target.value
-                    ele.id = e.target.value
-                    taskTobe.appendChild( ele )
-                }else{
-                    ids.splice(ind, 1);
-                    let el = document.getElementById(ids[ind])
-                    el.remove();
-                }
-            })
-        }
-    </script>
-</body>
+    <script type="text/javascript" src="/js/script.js"></script>
+  </body>
 </html>

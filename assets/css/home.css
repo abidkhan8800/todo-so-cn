@@ -1,0 +1,195 @@
+body{
+    background-color: white;
+}
+/* Main */
+.main{
+    margin: auto;
+    display: flex; 
+    flex-direction:column; 
+    align-items:center;
+    border-radius: 5%/10%;
+    padding: 1.5em;
+    background-color: rgb(220, 217, 199);
+    width: 60%;
+    height: 75vh;
+}
+/* Header */
+#header{
+    display: flex;
+    align-items: center;
+    justify-content:  center;
+    margin-bottom: 1em;
+}
+
+#header i, #header span{
+    margin: 0 0.2em;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: black;
+}
+
+/* Add task form */
+#task-form{
+    margin: 0 2em;
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5em;
+}
+#task-form div p{
+    margin: 0;
+    color: black;
+    font-size: 0.8em;
+    margin-bottom: 0.5em;
+}
+/* styling for add task form inputs */
+.input-style{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+#description-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#task-form input:focus, #task-form select:focus{
+    outline: none;
+}
+#category-date-container{
+    display: flex;
+    padding: 0.5em 0;
+    width: 100%;
+}
+#category-container{
+    padding-right: 1.2em;
+    width: 50%
+}
+#category{
+    padding: 0.2em 3em 0.2em 0em;
+    width: 100%;
+}
+#date-container{
+    padding-left: 1.2em;
+    width: 50%
+}
+#dueDate{
+   width: 100%;
+}
+#add-task-container{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 0.2em 0;
+}
+
+.class-button-style{
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    border: 1px solid black;
+    border-radius: 8%/20%;
+    background-color:transparent;
+}
+.class-button-style:hover{
+    background-color: black;
+    color:lightblue;
+    border: 1px solid lightblue;
+    cursor: pointer;
+    border-radius: 8%/20%;
+}
+
+
+/* All tasks container */
+#tasks-container{
+    padding: 0.5em;
+    width:100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.task-details-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-right: 0.5em;
+    border-bottom: 1px solid black;
+}
+
+.task-details{
+    display: flex;
+    width: 80%;
+    align-items: center;
+}
+.class-checked{
+    height: 15px;
+    width: 15px;
+}
+.class-checked:checked + div{
+   text-decoration: line-through;
+   color: gray;
+}
+.task-details input{
+    margin-right: 1em;
+}
+.description-duedate-container p{
+    margin: 0;
+}
+.class-due-date{
+    font-size: 12px;
+    padding-top: 2px;
+}
+.delete-task-container{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.delete-task-container a{
+   text-decoration: none;
+   color: black;
+}
+.delete-task-container a:hover{
+    color: rgb(106, 106, 106)
+ }
+
+ /* to delete multiple tasks at once */
+ #delete-tasks-container{
+    position: relative;
+    top: 10px;
+ }
+/* Classes for category */
+.label-styles{
+    text-align: center;
+    text-transform: capitalize;
+    color:white;
+    padding: 2px 5px;
+    width: 75px;
+}
+.personal{
+    background-color: rgb(255, 18, 18);
+}
+.school{
+    background-color: rgb(50, 160, 13);
+}
+.cleaning{
+    background-color: rgb(252, 166, 6);
+}
+.others{
+    background-color: brown;
+}
+.NA{
+    background-color: black;
+}
+
+/* footer */
+
+.delete-tasks-form{
+    display: flex;
+}
